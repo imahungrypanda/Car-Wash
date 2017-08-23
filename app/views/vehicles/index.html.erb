@@ -14,7 +14,7 @@
   <tbody>
     <% @vehicles.each do |vehicle| %>
       <tr>
-        <td><%= vehicle.type %></td>
+        <td><%= vehicle.vehicle_type %></td>
         <td><%= vehicle.license_plate %></td>
         <td><%= link_to 'Show', vehicle %></td>
         <td><%= link_to 'Edit', edit_vehicle_path(vehicle) %></td>
