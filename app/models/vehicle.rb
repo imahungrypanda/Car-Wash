@@ -40,7 +40,7 @@ class Vehicle < ApplicationRecord
   end
 
   def visit_cost
-    amount = truck? ? 10 : 5
+    amount = (truck? ? 10 : 5)
     self.visit_count > 0 ? amount / 2 : amount
   end
 

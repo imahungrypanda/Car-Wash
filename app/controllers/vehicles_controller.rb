@@ -23,8 +23,8 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.find_or_create_by(license_plate: params[:vehicle][:license_plate])
     p "================================ found ==========================="
+    @vehicle.visit unless @vehicle.id.nil?
     p @vehicle
-    @vehicle.visit unless @vehicle.nil?
 
 # TODO: add a check for if the license_plate == '1111111' render a go to jail page
     respond_to do |format|
