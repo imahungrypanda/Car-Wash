@@ -10,7 +10,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
-    # TODO: check if tailgate is down to render a rejection page
   end
 
   # GET /vehicles/new
@@ -21,12 +20,17 @@ class VehiclesController < ApplicationController
   # POST /vehicles
   # POST /vehicles.json
   def create
+    if params[:vehicle][:license_plate] == '1111111'
+      respond_to do |format|
+        format.html { render :template => 'vehicles/jail' }
+        format.json { render json: { message: 'This vehicle has been reported stolen! We will not give service to a stolen vehicle' } }
+      end
+      return
+    end
+    # TODO: check if tailgate is down to render a rejection page
     @vehicle = Vehicle.find_or_create_by(license_plate: params[:vehicle][:license_plate])
-    p "================================ found ==========================="
     @vehicle.visit unless @vehicle.id.nil?
-    p @vehicle
 
-# TODO: add a check for if the license_plate == '1111111' render a go to jail page
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
@@ -49,12 +53,10 @@ class VehiclesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_vehicle
       @vehicle = Vehicle.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
       params.require(:vehicle).permit(:vehicle_type, :license_plate, :muddy_bed, :tailgate_down)
     end
