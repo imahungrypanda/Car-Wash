@@ -19,7 +19,7 @@ class Vehicle < ApplicationRecord
   validates_exclusion_of :license_plate, :in => ["1111111"]
 
   def cost
-    truck? ? 10 : 5
+    visit_cost + bed_amount
   end
 
   def visit
@@ -37,5 +37,14 @@ class Vehicle < ApplicationRecord
       errors.add(:muddy_bed, "isn't part of a car") if self.muddy_bed
       errors.add(:tailgate_down, "is not possible") if self.tailgate_down
     end
+  end
+
+  def visit_cost
+    amount = truck? ? 10 : 5
+    self.visit_count > 0 ? amount / 2 : amount
+  end
+
+  def bed_amount
+    self.muddy_bed ? 2 : 0
   end
 end

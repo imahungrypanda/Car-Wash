@@ -27,5 +27,10 @@
   </p>
 <% end %>
 
+<p>
+  <strong>Total for visit:</strong>
+  <%= @vehicle.cost %>
+</p>
+
 <%= link_to 'All vehicles', vehicles_path %> |
 <%= link_to 'Delete car', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %>

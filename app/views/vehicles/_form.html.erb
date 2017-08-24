@@ -21,6 +21,16 @@
     <%= form.text_field :license_plate, id: :vehicle_license_plate %>
   </div>
 
+  <div class="field">
+    <%= form.label :muddy_bed %>
+    <%= form.check_box :muddy_bed, id: :vehicle_muddy_bed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tailgate_down %>
+    <%= form.check_box :tailgate_down, id: :vehicle_tailgate_down %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

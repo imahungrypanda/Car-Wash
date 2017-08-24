@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823231519) do
+ActiveRecord::Schema.define(version: 20170824014915) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "vehicle_type", null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170823231519) do
     t.integer "visit_count", default: 0
     t.boolean "tailgate_down", default: false
     t.boolean "muddy_bed", default: false
-    t.index ["license_plate"], name: "index_vehicles_on_license_plate"
+    t.index ["license_plate"], name: "index_vehicles_on_license_plate", unique: true
   end
 
 end
