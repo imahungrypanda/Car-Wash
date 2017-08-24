@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :vehicle_type %>
-    <%= form.text_field :vehicle_type, id: :vehicle_type %>
+    <%= form.select(:vehicle_type, options_for_select(['car', 'truck'])) %>
   </div>
 
   <div class="field">

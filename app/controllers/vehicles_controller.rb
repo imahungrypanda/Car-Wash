@@ -27,7 +27,7 @@ class VehiclesController < ApplicationController
       end
       return
     end
-    # TODO: check if tailgate is down to render a rejection page
+
     @vehicle = Vehicle.find_or_create_by(license_plate: params[:vehicle][:license_plate])
     @vehicle.visit unless @vehicle.id.nil?
 
