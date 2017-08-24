@@ -10,5 +10,22 @@
   <%= @vehicle.license_plate %>
 </p>
 
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'Back', vehicles_path %>
+<p>
+  <strong>Visit count:</strong>
+  <%= @vehicle.visit_count %>
+</p>
+
+<% if @vehicle.truck? %>
+  <p>
+    <strong>Mud in bed:</strong>
+    <%= @vehicle.muddy_bed %>
+  </p>
+
+  <p>
+    <strong>Tailgate Down:</strong>
+    <%= @vehicle.tailgate_down %>
+  </p>
+<% end %>
+
+<%= link_to 'All vehicles', vehicles_path %> |
+<%= link_to 'Delete car', @vehicle, method: :delete, data: { confirm: 'Are you sure?' } %>
