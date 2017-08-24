@@ -19,7 +19,8 @@ class Vehicle < ApplicationRecord
   validates_exclusion_of :license_plate, :in => ["1111111"]
 
   def cost
-    visit_cost + bed_amount
+    return 'No service' if self.tailgate_down
+    "$#{ visit_cost + bed_amount }"
   end
 
   def visit

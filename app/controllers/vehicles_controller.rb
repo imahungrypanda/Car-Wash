@@ -33,8 +33,13 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
+        if @vehicle.tailgate_down
+          format.html { render :template => 'vehicles/no_service' }
+          format.json { render json: { message: 'This vehicle has the tailgate down' } }
+        else
+          format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+          format.json { render :show, status: :created, location: @vehicle }
+        end
       else
         format.html { render :new }
         format.json { render json: @vehicle.errors, status: :unprocessable_entity }
