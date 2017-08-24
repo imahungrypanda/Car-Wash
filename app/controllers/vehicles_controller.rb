@@ -38,20 +38,6 @@ class VehiclesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vehicles/1
-  # PATCH/PUT /vehicles/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @vehicle.update(vehicle_params)
-  #       format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @vehicle }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @vehicle.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   # DELETE /vehicles/1
   # DELETE /vehicles/1.json
   def destroy
