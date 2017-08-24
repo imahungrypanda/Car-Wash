@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
+  before_action :set_vehicle, only: [:show, :update, :destroy]
 
   # GET /vehicles
   # GET /vehicles.json
@@ -15,10 +15,6 @@ class VehiclesController < ApplicationController
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
-  end
-
-  # GET /vehicles/1/edit
-  def edit
   end
 
   # POST /vehicles
